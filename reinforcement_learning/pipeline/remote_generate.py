@@ -388,7 +388,7 @@ def run_remote_generation(generation, local_out, target_total, seed, local_weigh
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Nebula Zero 远端自对弈执行器')
+    parser = argparse.ArgumentParser(description='AlphaGO_Connect6_end 远端自对弈执行器')
     parser.add_argument('--generation', type=int, required=True)
     parser.add_argument('--out', required=True)
     parser.add_argument('--target-total', type=int, required=True)

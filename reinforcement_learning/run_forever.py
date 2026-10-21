@@ -65,7 +65,7 @@ def initialize_loop_swanlab(mode):
     init_kwargs = {
         'project': config.SWANLAB_PROJECT,
         'name': config.SWANLAB_LOOP_RUN_NAME,
-        'description': 'Nebula Zero 跨代训练总览与 incumbent 趋势',
+        'description': 'AlphaGO_Connect6_end 跨代训练总览与 incumbent 趋势',
         'config': {
             'role': 'generation_loop',
             'selfplay_backend': selfplay_backend,
@@ -205,7 +205,7 @@ def sync_loop_summaries(active):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Nebula Zero 按代常驻监督器')
+    parser = argparse.ArgumentParser(description='AlphaGO_Connect6_end 按代常驻监督器')
     parser.add_argument(
         '--swanlab-mode',
         choices=['online', 'offline', 'local', 'disabled'],

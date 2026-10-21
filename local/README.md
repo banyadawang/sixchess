@@ -1,6 +1,6 @@
-# Nebula Zero - 本地客户端 (Local Client)
+# AlphaGO_Connect6_end - 本地客户端 (Local Client)
 
-本目录包含用于与 Nebula Zero AI 对弈的本地 GUI 客户端。界面使用 PyQt5 构建，底层核心 MCTS 计算由高性能 C++ 引擎驱动，神经网络推理使用 TensorRT 加速。
+本目录包含用于与 AlphaGO_Connect6_end AI 对弈的本地 GUI 客户端。界面使用 PyQt5 构建，底层核心 MCTS 计算由高性能 C++ 引擎驱动，神经网络推理使用 TensorRT 加速。
 
 ## 依赖要求 (Prerequisites)
 

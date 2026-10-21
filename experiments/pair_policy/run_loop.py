@@ -24,7 +24,7 @@ EXPERIMENT_DIR = os.path.dirname(os.path.abspath(__file__))
 RL_DIR = os.path.join(ROOT, "reinforcement_learning")
 PYTHON = sys.executable
 
-PROJECT = os.environ.get("NEBULA_SWANLAB_PROJECT", "Nebular-zero-two")
+PROJECT = os.environ.get("NEBULA_SWANLAB_PROJECT", "AlphaGO_Connect6_end")
 RUN_ROOT = os.path.abspath(
     os.environ.get(
         "NEBULA_PAIR_RUN_DIR",

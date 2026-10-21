@@ -36,7 +36,9 @@ wheels/
 *.pth
 *.pt
 *.engine
+*.engine.bak
 *.onnx
+*.onnx.data
 *.weights
 
 # Generated data / runs / logs

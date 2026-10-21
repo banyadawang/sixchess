@@ -1,4 +1,4 @@
-# Nebula Zero - 六子棋对弈与分析台
+# AlphaGO_Connect6_end - 六子棋对弈与分析台
 
 这是一个轻量级 Web 对弈服务，用于六子棋 AI 的在线对战、搜索观察和人工评估。
 

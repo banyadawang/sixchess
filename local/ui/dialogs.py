@@ -15,30 +15,30 @@ class GameResultDialog(QDialog):
         
         self.winner = winner  # 1=黑胜, -1=白胜, 0=平局, 2=流局（对局中保存）
         
-        # 设置对话框样式
+        # 设置对话框样式 (v2 星云主题)
         self.setStyleSheet("""
             QDialog {
-                background-color: #252526;
+                background-color: #171d33;
                 color: #ffffff;
             }
             QLabel {
-                color: #e0e0e0;
+                color: #dfe6f5;
                 font-family: 'Microsoft YaHei UI', sans-serif;
                 font-size: 14px;
             }
             QLineEdit {
                 padding: 8px;
-                border: 1px solid #3e3e42;
+                border: 1px solid #2c3557;
                 border-radius: 4px;
-                background-color: #333333;
+                background-color: #121830;
                 font-size: 14px;
                 color: #ffffff;
             }
             QLineEdit:focus {
-                border-color: #007acc;
+                border-color: #7c5cff;
             }
             QLineEdit::placeholder {
-                color: #888888;
+                color: #5d6a94;
             }
             QPushButton {
                 padding: 8px 20px;
@@ -47,20 +47,20 @@ class GameResultDialog(QDialog):
                 font-weight: bold;
             }
             QPushButton[text="Save"], QPushButton[text="保存"] {
-                background-color: #007acc;
+                background-color: #7c5cff;
                 color: white;
                 border: none;
             }
             QPushButton[text="Save"]:hover, QPushButton[text="保存"]:hover {
-                background-color: #1f8ad2;
+                background-color: #9678ff;
             }
             QPushButton[text="Cancel"], QPushButton[text="取消"] {
-                background-color: #3e3e42;
-                color: #cccccc;
-                border: 1px solid #555;
+                background-color: #232a47;
+                color: #b9c4e0;
+                border: 1px solid #46538a;
             }
             QPushButton[text="Cancel"]:hover, QPushButton[text="取消"]:hover {
-                background-color: #4e4e52;
+                background-color: #2c3557;
             }
         """)
         
@@ -90,7 +90,7 @@ class GameResultDialog(QDialog):
         # 副标题
         sub_label = QLabel("保存棋谱记录 (Game Record)")
         sub_label.setAlignment(Qt.AlignCenter)
-        sub_label.setStyleSheet("color: #888888; font-size: 13px; margin-bottom: 15px;")
+        sub_label.setStyleSheet("color: #8fa0c8; font-size: 13px; margin-bottom: 15px;")
         layout.addWidget(sub_label)
         
         # 表单布局
@@ -155,7 +155,7 @@ class GameResultDialog(QDialog):
         self.btn_cancel.clicked.connect(self.reject)
         self.btn_cancel.setStyleSheet("""
             QPushButton {
-                background-color: #6c757d;
+                background-color: #46538a;
                 color: white;
                 border: none;
                 padding: 10px 24px;
@@ -164,16 +164,16 @@ class GameResultDialog(QDialog):
                 font-weight: bold;
             }
             QPushButton:hover {
-                background-color: #5c636a;
+                background-color: #5d6a94;
             }
         """)
-        
+
         self.btn_save = QPushButton("保存棋谱")
         self.btn_save.setFixedWidth(120)
         self.btn_save.clicked.connect(self.accept)
         self.btn_save.setStyleSheet("""
             QPushButton {
-                background-color: #0d6efd;
+                background-color: #7c5cff;
                 color: white;
                 border: none;
                 padding: 10px 24px;
@@ -182,7 +182,7 @@ class GameResultDialog(QDialog):
                 font-weight: bold;
             }
             QPushButton:hover {
-                background-color: #0b5ed7;
+                background-color: #9678ff;
             }
         """)
         

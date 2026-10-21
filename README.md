@@ -1,10 +1,10 @@
-# Nebula Zero - 六子棋 AI
+# AlphaGO_Connect6_end - 六子棋 AI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ModelScope](https://img.shields.io/badge/ModelScope-模型下载-blue)](https://modelscope.cn/models/Lazyshu/Nebula_Zero_Connect6)
 [English Version](README_en.md)
 
-**Nebula Zero** 是面向六子棋的 AlphaZero 风格实现：自回归策略分解、C++ MCTS、TensorRT 推理加速，以及可恢复的自我对弈训练环。
+**AlphaGO_Connect6_end** 是面向六子棋的 AlphaZero 风格实现：自回归策略分解、C++ MCTS、TensorRT 推理加速，以及可恢复的自我对弈训练环。
 
 > 首届北京市大学生「人工智能+」创新大赛六子棋赛道冠军项目。
 
@@ -49,7 +49,7 @@
 ## 目录结构
 
 ```text
-Nebula-Zero-Connect6/
+AlphaGO_Connect6_end/
 ├── supervised_learning/       # 人类棋谱监督预训练
 ├── reinforcement_learning/    # C6TransNet + MCTS + 自对弈主循环
 ├── experiments/

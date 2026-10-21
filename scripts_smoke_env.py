@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimal environment smoke for Nebula-Zero-Connect6."""
+"""Minimal environment smoke for AlphaGO_Connect6_end."""
 import os
 import sys
 import time

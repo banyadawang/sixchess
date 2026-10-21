@@ -1,4 +1,4 @@
-# Nebula Zero 强化学习与高速自对弈
+# AlphaGO_Connect6_end 强化学习与高速自对弈
 
 这个目录包含 C6TransNet、C++ MCTS、自我对弈、门控评估和训练主循环。
 当前默认推理链路针对“搜索次数不变、整局更快”进行了优化。
@@ -85,7 +85,7 @@ python pipeline/generate.py --engine checkpoints/current_model.engine --total 20
 ```bash
 NEBULA_SELFPLAY_BACKEND=remote \
 NEBULA_REMOTE_SELFPLAY_HOST=user@remote-host \
-NEBULA_REMOTE_PROJECT_DIR=/path/to/Nebula-Zero-Connect6 \
+NEBULA_REMOTE_PROJECT_DIR=/path/to/AlphaGO_Connect6_end \
 NEBULA_REMOTE_PYTHON=python \
 NEBULA_REMOTE_SELFPLAY_GPUS=0,1,2,3 \
 NEBULA_REMOTE_NUM_WORKERS=4 \

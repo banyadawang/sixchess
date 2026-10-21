@@ -1,4 +1,4 @@
-"""Nebula Zero 六子棋 Web 对弈服务。"""
+"""AlphaGO_Connect6_end 六子棋 Web 对弈服务。"""
 
 import glob
 import os

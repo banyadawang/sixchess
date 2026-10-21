@@ -69,10 +69,10 @@ python reinforcement_learning/core/compile_mcts.py \
 CUDA_VISIBLE_DEVICES=6 python experiments/pair_policy/export_pair_onnx.py \
   experiments/pair_policy/output/joint_aggressive/main.pth \
   experiments/pair_policy/output/joint_aggressive/pair_heads.pt \
-  /tmp/nebula_pair.onnx
+  /tmp/alphago_pair.onnx
 
 CUDA_VISIBLE_DEVICES=6 python reinforcement_learning/pipeline/build_engine.py \
-  /tmp/nebula_pair.onnx /tmp/nebula_pair.engine
+  /tmp/alphago_pair.onnx /tmp/alphago_pair.engine
 ```
 
 双卡候选生成配置：
@@ -88,7 +88,7 @@ NEBULA_NUM_WORKERS=2 \
 NEBULA_MCTS_THREADS=32 \
 NEBULA_MCTS_CONCURRENT_GAMES=24 \
 python reinforcement_learning/pipeline/generate.py \
-  --engine /tmp/nebula_pair.engine --total 192 --out /tmp/pair_test.csv
+  --engine /tmp/alphago_pair.engine --total 192 --out /tmp/pair_test.csv
 ```
 
 上述命令只用于研究候选。正式接入主循环前还需在 H20 上重新构建、复测吞吐，

@@ -84,24 +84,23 @@ class Connect6Board(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-        # Draw Background (Dark Grey everywhere)
-        painter.fillRect(self.rect(), QColor(30, 30, 30)) 
-        
-        # Draw Wood Texture Background
-        # Fill the entire board area including margins
+        # Draw Background (深空蓝, 与窗口主题一致)
+        painter.fillRect(self.rect(), QColor(15, 20, 40))
+
+        # Draw Board Surface (暗夜石板蓝)
         board_left = self.offset_x - MARGIN
         board_top = self.offset_y - MARGIN
         board_w = (BOARD_SIZE - 1) * self.grid_size + 2 * MARGIN
         board_h = (BOARD_SIZE - 1) * self.grid_size + 2 * MARGIN
-        
-        painter.fillRect(int(board_left), int(board_top), int(board_w), int(board_h), QColor(220, 179, 92))
-        
+
+        painter.fillRect(int(board_left), int(board_top), int(board_w), int(board_h), QColor(34, 48, 74))
+
         # Draw Border Line
-        painter.setPen(QPen(QColor(100, 70, 20), 2))
+        painter.setPen(QPen(QColor(74, 95, 143), 2))
         painter.drawRect(int(board_left), int(board_top), int(board_w), int(board_h))
 
         # Draw Grid
-        pen = QPen(Qt.black, 1)
+        pen = QPen(QColor(143, 163, 204), 1)
         painter.setPen(pen)
         
         # Labels font (Small, Black, on Wood)
@@ -121,8 +120,8 @@ class Connect6Board(QWidget):
             painter.drawLine(int(x), int(self.offset_y), 
                              int(x), int(self.offset_y + (BOARD_SIZE - 1) * self.grid_size))
                              
-            # Draw Labels INSIDE the wood board
-            painter.setPen(Qt.black) # Black text on wood
+            # Draw Labels INSIDE the board
+            painter.setPen(QColor(174, 191, 224)) # 浅蓝灰文字
             text_flags = Qt.AlignCenter
             
             # Row numbers (19-1) on LEFT side
@@ -147,7 +146,7 @@ class Connect6Board(QWidget):
 
         # Draw Star Points
         stars = [3, 9, 15]
-        painter.setBrush(Qt.black)
+        painter.setBrush(QColor(200, 214, 240))
         star_rad = self.grid_size * 0.15
         for r in stars:
             for c in stars:
@@ -176,11 +175,11 @@ class Connect6Board(QWidget):
                     cy = self.offset_y + r * self.grid_size
                     
                     # Color based on prob relative to max
-                    # Red = High, Blue = Low
+                    # 深空粉 = High, Low = 更透明
                     ratio = prob / max_prob
-                    # Simple alpha blend: Red with alpha
+                    # Simple alpha blend: deep-space pink with alpha
                     alpha = int(150 * ratio + 50) # 50-200
-                    color = QColor(255, 0, 0, alpha)
+                    color = QColor(255, 77, 143, alpha)
                     
                     painter.setBrush(color)
                     painter.setPen(Qt.NoPen)
@@ -206,9 +205,9 @@ class Connect6Board(QWidget):
                     
                     # Simplified text drawing: Draw black text slightly offset, then white text
                     # Actually, just drawing it centered in the rect is enough if we use a good color
-                    # Let's use Yellow for high prob, White for low
-                    
-                    text_color = Qt.yellow if prob > 0.1 else Qt.white
+                    # Let's use Gold for high prob, White for low
+
+                    text_color = QColor(255, 209, 102) if prob > 0.1 else Qt.white
                     
                     # Draw Shadow/Outline
                     painter.setPen(Qt.black)
@@ -228,17 +227,18 @@ class Connect6Board(QWidget):
                     cy = self.offset_y + r * self.grid_size
                     
                     if self.board[r][c] == 1: # Black
-                        painter.setBrush(Qt.black)
-                        painter.setPen(Qt.NoPen)
+                        painter.setBrush(QColor(16, 16, 22))
+                        painter.setPen(QPen(QColor(74, 95, 143), 1))
                     else: # White
-                        painter.setBrush(Qt.white)
-                        painter.setPen(Qt.black)
-                        
+                        painter.setBrush(QColor(242, 244, 248))
+                        painter.setPen(QPen(QColor(90, 104, 138), 1))
+
                     painter.drawEllipse(int(cx - stone_rad), int(cy - stone_rad), int(stone_rad*2), int(stone_rad*2))
-                    
-                    # Highlight Last Move
+
+                    # Highlight Last Move (金色标记)
                     if self.last_move == (r, c):
-                        painter.setBrush(Qt.red)
+                        painter.setPen(Qt.NoPen)
+                        painter.setBrush(QColor(255, 209, 102))
                         painter.drawEllipse(int(cx - star_rad), int(cy - star_rad), int(star_rad*2), int(star_rad*2))
 
         # Draw Hover (Ghost Stone)

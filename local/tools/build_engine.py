@@ -9,8 +9,11 @@ def build_engine(onnx_path, engine_path, batch_size=1024):
     # 2. Create Builder, Network, and Config
     builder = trt.Builder(TRT_LOGGER)
     
-    # EXPLICIT_BATCH flag is required for ONNX models with dynamic axes
-    network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
+    # TRT 11+: EXPLICIT_BATCH is the default and the flag is removed
+    try:
+        network = builder.create_network(1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH))
+    except AttributeError:
+        network = builder.create_network()
     config = builder.create_builder_config()
     
     # 3. Parser
@@ -49,12 +52,12 @@ def build_engine(onnx_path, engine_path, batch_size=1024):
              
     config.add_optimization_profile(profile)
     
-    # 5. FP16 Mode
-    if builder.platform_has_fast_fp16:
-        print("Enabling FP16 mode...")
+    # 5. Precision: TRT 11+ removed FP16 flag, uses TF32 + default mixed precision
+    try:
         config.set_flag(trt.BuilderFlag.FP16)
-    else:
-        print("FP16 not supported, using FP32.")
+        print("Enabling FP16 mode...")
+    except AttributeError:
+        print("TRT 11+: Using default mixed precision (FP16 not a separate flag)")
         
     # Workspace size
     # set_memory_pool_limit is the new API

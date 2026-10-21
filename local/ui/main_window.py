@@ -35,11 +35,11 @@ WINDOW_HEIGHT = 1150
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Nebula-Zero——Connect6 AI")
+        self.setWindowTitle("AlphaGO_Connect6_end v2——六子棋 AI")
         self.resize(WINDOW_WIDTH, WINDOW_HEIGHT)
         
         # 设置窗口图标
-        icon_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "photos", "Nebulazero.png")
+        icon_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "photos", "AlphaGO_Connect6_end.png")
         if os.path.exists(icon_path):
             self.setWindowIcon(QIcon(icon_path))
         
@@ -90,45 +90,46 @@ class MainWindow(QMainWindow):
         self.ai_trigger_timer.timeout.connect(self.trigger_ai)
 
     def apply_styles(self):
+        # v2 深空主题: 深空蓝紫底 + 紫色强调
         self.setStyleSheet("""
             QMainWindow {
-                background-color: #1e1e1e;
-                color: #e0e0e0;
+                background-color: #0f1428;
+                color: #dfe6f5;
                 font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
             }
             QLabel, QRadioButton, QCheckBox {
-                color: #cccccc;
+                color: #b9c4e0;
                 font-size: 15px;
             }
             QGroupBox {
-                border: 1px solid #3e3e42;
+                border: 1px solid #2c3557;
                 border-radius: 8px;
                 margin-top: 24px;
                 font-weight: bold;
                 font-size: 16px;
-                color: #e0e0e0;
-                background-color: #252526;
+                color: #dfe6f5;
+                background-color: #171d33;
             }
             QGroupBox#info {
-                border: 1px solid #3e3e42;
+                border: 1px solid #2c3557;
                 border-radius: 8px;
                 margin-top: 24px;
                 font-weight: bold;
                 font-size: 20px;
-                color: #e0e0e0;
-                background-color: #252526;
+                color: #dfe6f5;
+                background-color: #171d33;
             }
             QGroupBox::title {
                 subcontrol-origin: margin;
                 subcontrol-position: top left;
                 padding: 0 10px;
                 left: 10px;
-                color: #aeaeae;
+                color: #8fa0c8;
                 font-size: 16px;
             }
-            
+
             QPushButton {
-                background-color: #007acc;
+                background-color: #7c5cff;
                 color: white;
                 border: none;
                 padding: 8px 16px;
@@ -137,25 +138,25 @@ class MainWindow(QMainWindow):
                 font-size: 15px;
             }
             QPushButton:hover {
-                background-color: #1f8ad2;
+                background-color: #9678ff;
             }
             QPushButton:pressed {
-                background-color: #005a9e;
+                background-color: #5f43d6;
             }
             QPushButton:disabled {
-                background-color: #3e3e42;
-                color: #858585;
+                background-color: #232a47;
+                color: #5d6a94;
                 border: none;
             }
             QComboBox, QSpinBox, QDoubleSpinBox, QLineEdit {
                 padding: 6px;
-                border: 1px solid #3e3e42;
+                border: 1px solid #2c3557;
                 border-radius: 4px;
-                background-color: #333333;
-                color: #f0f0f0;
+                background-color: #121830;
+                color: #f0f4ff;
                 font-size: 16px;
                 font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
-                selection-background-color: #007acc;
+                selection-background-color: #7c5cff;
             }
             QComboBox::drop-down {
                 border: none;
@@ -166,39 +167,39 @@ class MainWindow(QMainWindow):
                 image: none;
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
-                border-top: 5px solid #cccccc;
+                border-top: 5px solid #8fa0c8;
                 margin-right: 5px;
             }
             QComboBox QAbstractItemView {
-                border: 1px solid #3e3e42;
-                background-color: #252526;
-                color: #f0f0f0;
+                border: 1px solid #2c3557;
+                background-color: #171d33;
+                color: #f0f4ff;
                 font-size: 16px;
                 font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
-                selection-background-color: #007acc;
+                selection-background-color: #7c5cff;
                 outline: 0px;
             }
             QComboBox QAbstractItemView::item {
-                background-color: #252526;
-                color: #f0f0f0;
+                background-color: #171d33;
+                color: #f0f4ff;
                 padding: 6px;
                 min-height: 24px;
             }
             QComboBox QAbstractItemView::item:hover {
-                background-color: #3e3e42;
+                background-color: #232a47;
                 color: #ffffff;
             }
             QComboBox QAbstractItemView::item:selected {
-                background-color: #007acc;
+                background-color: #7c5cff;
                 color: #ffffff;
             }
             QComboBox QListView {
-                background-color: #252526;
-                color: #f0f0f0;
-                border: 1px solid #3e3e42;
+                background-color: #171d33;
+                color: #f0f4ff;
+                border: 1px solid #2c3557;
             }
             QCheckBox {
-                color: #cccccc;
+                color: #b9c4e0;
                 font-size: 13px;
                 spacing: 8px;
             }
@@ -206,28 +207,28 @@ class MainWindow(QMainWindow):
                 width: 16px;
                 height: 16px;
                 border-radius: 3px;
-                border: 1px solid #555;
-                background-color: #333;
+                border: 1px solid #46538a;
+                background-color: #121830;
             }
             QCheckBox::indicator:checked {
-                background-color: #007acc;
-                border-color: #007acc;
+                background-color: #7c5cff;
+                border-color: #7c5cff;
             }
             QMessageBox {
-                background-color: #252526;
-                color: #e0e0e0;
+                background-color: #171d33;
+                color: #dfe6f5;
             }
             QMessageBox QLabel {
-                color: #e0e0e0;
+                color: #dfe6f5;
             }
             QScrollBar:vertical {
                 border: none;
-                background: #1e1e1e;
+                background: #0f1428;
                 width: 10px;
                 margin: 0px 0px 0px 0px;
             }
             QScrollBar::handle:vertical {
-                background: #424242;
+                background: #46538a;
                 min-height: 20px;
                 border-radius: 5px;
             }
@@ -235,11 +236,11 @@ class MainWindow(QMainWindow):
                 height: 0px;
             }
         """)
-        
+
         # Specific overrides
-        self.lbl_black_time.setStyleSheet("color: #ff6b6b; font-size: 18px; font-weight: bold;")
-        self.lbl_white_time.setStyleSheet("color: #4ecdc4; font-size: 18px; font-weight: bold;")
-        self.lbl_turn.setStyleSheet("color: #ffe66d; font-size: 16px; font-weight: bold;")
+        self.lbl_black_time.setStyleSheet("color: #ff8fa3; font-size: 18px; font-weight: bold;")
+        self.lbl_white_time.setStyleSheet("color: #4dd7e8; font-size: 18px; font-weight: bold;")
+        self.lbl_turn.setStyleSheet("color: #ffd166; font-size: 16px; font-weight: bold;")
 
     def init_ui(self):
         central_widget = QWidget()
@@ -254,8 +255,8 @@ class MainWindow(QMainWindow):
         self.notification_bar.setAlignment(Qt.AlignCenter)
         self.notification_bar.setStyleSheet("""
             QLabel {
-                background-color: #2d2d2d;
-                color: #888888;
+                background-color: #171d33;
+                color: #8fa0c8;
                 font-size: 20px;
                 font-weight: bold;
                 padding: 10px;
@@ -280,8 +281,8 @@ class MainWindow(QMainWindow):
         # Remove borders and background
         right_scroll.setStyleSheet("""
             QScrollArea { border: none; background-color: transparent; }
-            QScrollBar:vertical { width: 8px; background: #2d2d2d; }
-            QScrollBar::handle:vertical { background: #555; border-radius: 4px; }
+            QScrollBar:vertical { width: 8px; background: #171d33; }
+            QScrollBar::handle:vertical { background: #46538a; border-radius: 4px; }
         """)
         
         right_panel = QFrame()
@@ -313,7 +314,7 @@ class MainWindow(QMainWindow):
         info_layout.addWidget(self.lbl_turn)
         
         self.lbl_operator = QLabel("操作者: --")
-        self.lbl_operator.setStyleSheet("color: #00ff00; font-weight: bold; font-size: 18px;")
+        self.lbl_operator.setStyleSheet("color: #2ecc8f; font-weight: bold; font-size: 18px;")
         info_layout.addWidget(self.lbl_operator)
         info_group.setLayout(info_layout)
         control_panel.addWidget(info_group)
@@ -463,6 +464,12 @@ class MainWindow(QMainWindow):
         control_panel.addLayout(btn_layout)
         control_panel.addStretch()
 
+        # 版本标识 (v2 深空主题)
+        lbl_version = QLabel("AlphaGO_Connect6_end v2 · 深空主题")
+        lbl_version.setAlignment(Qt.AlignCenter)
+        lbl_version.setStyleSheet("color: #5d6a94; font-size: 12px; padding: 4px;")
+        control_panel.addWidget(lbl_version)
+
         # Initial param sync
         self.update_ai_params()
         
@@ -548,9 +555,9 @@ class MainWindow(QMainWindow):
         op = self.get_current_operator()
         self.lbl_operator.setText(f"操作者: {op}")
         if op == 'Human':
-            self.lbl_operator.setStyleSheet("color: #00ff00; font-weight: bold; font-size: 18px;")
+            self.lbl_operator.setStyleSheet("color: #2ecc8f; font-weight: bold; font-size: 18px;")
         else:
-            self.lbl_operator.setStyleSheet("color: #ff0000; font-weight: bold; font-size: 18px;")
+            self.lbl_operator.setStyleSheet("color: #ff5470; font-weight: bold; font-size: 18px;")
         
         # Update notification bar
         self.update_notification_bar()
@@ -560,7 +567,7 @@ class MainWindow(QMainWindow):
         if not self.game_active:
             self.notification_bar.setText("等待开始...")
             self.notification_bar.setStyleSheet("""
-                QLabel { background-color: #2d2d2d; color: #888888; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                QLabel { background-color: #171d33; color: #8fa0c8; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
             """)
             return
             
@@ -581,18 +588,18 @@ class MainWindow(QMainWindow):
                     if time_left <= 10:
                         self.notification_bar.setText(f"你的回合！剩余 {time_left} 秒")
                         self.notification_bar.setStyleSheet("""
-                            QLabel { background-color: #ff4444; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                            QLabel { background-color: #ff5470; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
                         """)
                     else:
                         self.notification_bar.setText(f"你的回合！剩余 {time_left} 秒")
                         self.notification_bar.setStyleSheet("""
-                            QLabel { background-color: #4CAF50; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                            QLabel { background-color: #2ecc8f; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
                         """)
-                else: 
-                    # 我方AI回合 - 蓝色
+                else:
+                    # 我方AI回合 - 青蓝
                     self.notification_bar.setText("AI 思考中...")
                     self.notification_bar.setStyleSheet("""
-                        QLabel { background-color: #2196F3; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                        QLabel { background-color: #38c8ff; color: #0f1428; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
                     """)
             else:
                 # 对方回合（总是人类） - 黑色/白色背景
@@ -600,7 +607,7 @@ class MainWindow(QMainWindow):
                 # 黑底白字 或者 白底黑字
                 bg_color = "#000000" if self.current_player == 1 else "#f0f0f0"
                 text_color = "#ffffff" if self.current_player == 1 else "#000000"
-                border_color = "#333" if self.current_player == 1 else "#ccc"
+                border_color = "#2c3557" if self.current_player == 1 else "#8fa0c8"
                 
                 self.notification_bar.setText(f"对方回合 ({turn_str})")
                 self.notification_bar.setStyleSheet(f"""
@@ -611,13 +618,13 @@ class MainWindow(QMainWindow):
             if op == 'AI':
                 self.notification_bar.setText("AI 思考中...")
                 self.notification_bar.setStyleSheet("""
-                    QLabel { background-color: #2196F3; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                    QLabel { background-color: #38c8ff; color: #0f1428; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
                 """)
             else:
                 # 人类回合（我方）
                 self.notification_bar.setText(f"轮到你了")
                 self.notification_bar.setStyleSheet("""
-                    QLabel { background-color: #4CAF50; color: white; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
+                    QLabel { background-color: #2ecc8f; color: #0f1428; font-size: 20px; font-weight: bold; padding: 10px; border-radius: 5px; }
                 """)
             
     def check_ai_turn(self):
@@ -683,15 +690,15 @@ class MainWindow(QMainWindow):
             msg_box.setStandardButtons(QMessageBox.Ok)
             msg_box.setStyleSheet("""
                 QMessageBox {
-                    background-color: #252526;
-                    color: #e0e0e0;
+                    background-color: #171d33;
+                    color: #dfe6f5;
                 }
                 QMessageBox QLabel {
-                    color: #e0e0e0;
+                    color: #dfe6f5;
                     font-size: 14px;
                 }
                 QPushButton {
-                    background-color: #007acc;
+                    background-color: #7c5cff;
                     color: white;
                     border: none;
                     padding: 8px 20px;
@@ -701,7 +708,7 @@ class MainWindow(QMainWindow):
                     min-width: 80px;
                 }
                 QPushButton:hover {
-                    background-color: #1f8ad2;
+                    background-color: #9678ff;
                 }
             """)
             msg_box.exec_()
@@ -878,28 +885,28 @@ class MainWindow(QMainWindow):
         dialog.setIntValue(60)
         dialog.setStyleSheet("""
             QInputDialog {
-                background-color: #2d2d2d;
+                background-color: #171d33;
             }
             QLabel {
-                color: #e0e0e0;
+                color: #dfe6f5;
                 font-size: 14px;
             }
             QSpinBox {
-                background-color: #333333;
-                color: #f0f0f0;
-                border: 1px solid #3e3e42;
+                background-color: #121830;
+                color: #f0f4ff;
+                border: 1px solid #2c3557;
                 border-radius: 4px;
                 padding: 5px;
             }
             QPushButton {
-                background-color: #007acc;
+                background-color: #7c5cff;
                 color: white;
                 border: none;
                 padding: 6px 16px;
                 border-radius: 4px;
             }
             QPushButton:hover {
-                background-color: #1f8ad2;
+                background-color: #9678ff;
             }
         """)
         

@@ -340,7 +340,7 @@ def initialize_swanlab(generation, current_epochs, accepted_generation, mode=Non
         'reinit': True,
         'project': config.SWANLAB_PROJECT,
         'name': f'{config.SWANLAB_RUN_PREFIX}_{generation}',
-        'description': f'Nebula Zero 第 {generation} 代：自我对弈、训练与门控',
+        'description': f'AlphaGO_Connect6_end 第 {generation} 代：自我对弈、训练与门控',
         'config': {
             'generation': generation,
             'accepted_generation': accepted_generation,
@@ -869,7 +869,7 @@ def run_training_loop(max_generations=None, swanlab_mode=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Nebula Zero 强化学习主循环')
+    parser = argparse.ArgumentParser(description='AlphaGO_Connect6_end 强化学习主循环')
     parser.add_argument('--max-generations', type=int, default=None, help='最多运行几代；用于冒烟测试')
     parser.add_argument(
         '--swanlab-mode',

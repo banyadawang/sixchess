@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#111b2d">
-    <title>Nebula Zero · 六子棋对弈台</title>
+    <title>AlphaGO_Connect6_end · 六子棋对弈台</title>
     <style>
         :root {
             color-scheme: light;
@@ -1041,7 +1041,7 @@
         <div class="brand">
             <div class="brand-mark" aria-hidden="true"></div>
             <div class="brand-copy">
-                <h1>Nebula Zero</h1>
+                <h1>AlphaGO_Connect6_end</h1>
                 <p>六子棋人机对弈与搜索分析台</p>
             </div>
         </div>
@@ -1258,7 +1258,7 @@
     const BOARD_MARGIN = 50;
     const CELL_SIZE = (CANVAS_SIZE - BOARD_MARGIN * 2) / (BOARD_SIZE - 1);
     const COLUMN_LABELS = "ABCDEFGHIJKLMNOPQRS";
-    const STORAGE_KEY = "nebula-zero-web-settings-v2";
+    const STORAGE_KEY = "alphago-connect6-end-web-settings-v2";
 
     const canvas = document.getElementById("board");
     const ctx = canvas.getContext("2d");
@@ -1988,7 +1988,7 @@
             };
         });
         const record = {
-            format: "nebula-zero-connect6",
+            format: "alphago-connect6-end",
             version: 1,
             board_size: BOARD_SIZE,
             created_at: new Date().toISOString(),
@@ -2012,7 +2012,7 @@
         const link = document.createElement("a");
         const timestamp = new Date().toISOString().replaceAll(":", "-").slice(0, 19);
         link.href = url;
-        link.download = "nebula-connect6-" + timestamp + ".json";
+        link.download = "alphago-connect6-end-" + timestamp + ".json";
         document.body.appendChild(link);
         link.click();
         link.remove();

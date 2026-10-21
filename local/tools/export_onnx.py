@@ -16,7 +16,9 @@ def export_to_onnx(model_path, output_path, batch_size=32):
     # 1. Load Model
     print(f"Loading model from {model_path}...")
     model = C6TransNet(input_planes=17).to(device)
-    checkpoint = torch.load(model_path, map_location=device)
+    # weights_only=False: checkpoint 含 optimizer_state_dict (非纯张量),
+    # torch 2.6+ 默认 weights_only=True 会拒载
+    checkpoint = torch.load(model_path, map_location=device, weights_only=False)
     
     if 'state_dict' in checkpoint:
         state_dict = checkpoint['state_dict']
@@ -47,11 +49,11 @@ def export_to_onnx(model_path, output_path, batch_size=32):
     
     # Exporting with opset 11 or higher is recommended
     torch.onnx.export(
-        model, 
+        model,
         (dummy_input, dummy_move1), # Args: Tuple of all inputs
         output_path,
         export_params=True,
-        opset_version=11,
+        opset_version=17,
         do_constant_folding=True,
         input_names=['input', 'move1_idx'],
         output_names=['policy1', 'policy2', 'value'],
@@ -61,7 +63,9 @@ def export_to_onnx(model_path, output_path, batch_size=32):
             'policy1': {0: 'batch_size'},
             'policy2': {0: 'batch_size'},
             'value': {0: 'batch_size'}
-        }
+        },
+        # torch 2.11 默认 dynamo 导出器对老模型报 LeafSpec 错误, 回退传统路径
+        dynamo=False
     )
     print("Export success!")
 

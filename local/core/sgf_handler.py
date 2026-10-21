@@ -142,7 +142,7 @@ class C6SGFHandler:
             print(f"Save Error: {e}")
             return None
 
-    def save_game(self, filepath, black_name, white_name, winner, moves, date_place="Unknown", event="Nebula Cup"):
+    def save_game(self, filepath, black_name, white_name, winner, moves, date_place="Unknown", event="AlphaGO Cup"):
         """
         旧版保存方法，保持向后兼容。
         moves: List of (row, col, player)
